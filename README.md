@@ -21,7 +21,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
@@ -36,10 +35,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">Water tracker</h3>
 
   <p align="center">
-    project_description
+    This is an app for tracking daily water intake.
     <br />
     <a href="https://github.com/henettaja/water-tracker/"><strong>Explore the docs »</strong></a>
     <br />
@@ -184,13 +183,13 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/henettaja/water-tracker.svg?style=for-the-badge
 [contributors-url]: https://github.com/henettaja/water-tracker/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/henettaja/water-tracker.svg?style=for-the-badge
 [stars-url]: https://github.com/henettaja/water-tracker/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/henettaja/water-tracker/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/henettaja/water-tracker.svg?style=for-the-badge
+[issues-url]: https://github.com/henettaja/water-tracker/issues
+[license-shield]: https://img.shields.io/github/license/henettaja/water-tracker.svg?style=for-the-badge
 [license-url]: https://github.com/henettaja/water-tracker/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: linkedin.com/in/henrivaisanen/
