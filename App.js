@@ -15,7 +15,7 @@ export default function App() {
             primary: '#2176FF',
             accent: '#33A1FD',
             background: '#31393C',
-            text: '#EADEDA'
+            text: '#FFFFFF'
         },
     };
 
