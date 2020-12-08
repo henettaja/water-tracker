@@ -3,7 +3,25 @@ import {View, StyleSheet, Dimensions} from "react-native";
 import {Title, Text, Button, Chip, Snackbar, Portal} from "react-native-paper";
 import {AnimatedCircularProgress} from "react-native-circular-progress";
 import ChangeTargetDialog from "./ChangeTargetDialog";
-import valuesToPercentage from "../utilities";
+import valuesToPercentage, {today} from "../utilities";
+import * as firebase from "firebase";
+import {DateTime} from "luxon/src/datetime";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDDJdE1_PFukKC53IoewJ9aK5zt83Ei1ao",
+    authDomain: "water-tracker-us.firebaseapp.com",
+    databaseURL: "https://water-tracker-us-default-rtdb.firebaseio.com/",
+    projectId: "water-tracker-us",
+    storageBucket: "water-tracker-us.appspot.com",
+    messagingSenderId: "225268416727",
+    appId: "1:225268416727:web:01c0005c7f8f4048637092"
+};
+
+if (firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+}else {
+    firebase.app(); // if already initialized, use that one
+}
 
 export default function MainScreen() {
 
@@ -17,17 +35,37 @@ export default function MainScreen() {
 
     const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 
+    const defineTarget = () => {
+        setTarget(1500);
+        firebase.database().ref('users/001/').update(
+            {'waterTarget': target}
+        ).then(r => null);
+    }
+
     const addWater = () => {
-        setWater(water + 330);
-        setPercentage(valuesToPercentage(target, water))
+        setWater(water + 330)
+        firebase.database().ref('users/001/' + today() + '/').update(
+            {'waterAmount': water, 'date': today()}
+        ).then(r => null);
         onToggleSnackBar();
-        console.log(water);
+        setPercentage(valuesToPercentage(target, water))
     }
 
     const resetWater = () => {
         setWater(0);
+        firebase.database().ref('users/001/' + today() + '/').update(
+            {'waterAmount': water, 'date': today()}
+        ).then(r => null);
         setPercentage(0);
     }
+
+    React.useEffect(() => {
+        /*firebase.database().ref('users/001/target/').on('value', snapshot => {
+            const data = snapshot.val();
+            const prods = Object.values(data);
+            setTarget(prods)
+        })*/
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -85,7 +123,7 @@ export default function MainScreen() {
                 <ChangeTargetDialog
                     isDialogVisible={isDialogVisible}
                     setIsDialogVisible={setIsDialogVisible}
-                    setTarget={setTarget}
+                    setTarget={defineTarget}
                     target={target}
                 />
             </Portal>
