@@ -11,7 +11,7 @@
     "@react-native-community/art": "^1.2.0",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
-    "firebase": "^7.9.0",
+    "firebase": "7.9.0",
     "luxon": "^1.25.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",

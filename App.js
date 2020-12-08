@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import Bottomnav from "./components/Bottomnav"
 import {DefaultTheme, Provider as PaperProvider} from "react-native-paper";
 import { StyleSheet, View } from 'react-native';
+import firebase from "firebase/app";
 
 export default function App() {
 
