@@ -15,7 +15,6 @@ export default function ChangeTargetDialog(props) {
                         <Dialog.Title>Set water target (millilitres)</Dialog.Title>
                         <Dialog.Content>
                             <TextInput
-                                value={props.target}
                                 onChangeText={text => setInputVal(text)}
                             />
                         </Dialog.Content>
