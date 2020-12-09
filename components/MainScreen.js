@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {View, StyleSheet, Dimensions} from "react-native";
 import {Title, Text, Button, Chip, Snackbar, Portal} from "react-native-paper";
 import {AnimatedCircularProgress} from "react-native-circular-progress";
@@ -8,7 +8,7 @@ import * as firebase from "firebase";
 
 export default function MainScreen() {
 
-    const [target, setTarget] = React.useState(2000);
+    const [target, setTarget] = React.useState(0);
     const [water, setWater] = React.useState(0);
     const [percentage, setPercentage] = React.useState(0);
 
@@ -19,44 +19,60 @@ export default function MainScreen() {
     const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 
     const defineTarget = (userTarget) => {
-        setTarget(userTarget);
         firebase.database().ref('users/001/').update(
-            {'waterTarget': target}
+            {'waterTarget': userTarget}
+        ).then(r => null);
+        firebase.database().ref('targets/001/').update(
+            {'waterTarget': userTarget}
         ).then(r => null);
     }
 
     const addWater = () => {
-        setWater(water + 330)
         firebase.database().ref('users/001/' + today() + '/').update(
-            {'waterAmount': water, 'date': today()}
+            {'waterAmount': water + 330, 'date': today(), 'percentage': valuesToPercentage(target, water + 330)}
+        ).then(r => null);
+        firebase.database().ref('waterAmounts/001/' + today() + '/').update(
+            {'waterAmount': water + 330, 'date': today(), 'percentage': valuesToPercentage(target, water + 330)}
+        ).then(r => null);
+        firebase.database().ref('datesTracked/001/' + today() + '/').update(
+            {'date': today()}
         ).then(r => null);
         onToggleSnackBar();
-        setPercentage(valuesToPercentage(target, water))
     }
 
     const resetWater = () => {
-        setWater(0);
         firebase.database().ref('users/001/' + today() + '/').update(
-            {'waterAmount': water, 'date': today()}
+            {'waterAmount': 0, 'date': today(), 'percentage': 0}
         ).then(r => null);
         setPercentage(0);
     }
 
     React.useEffect(() => {
-        /*firebase.database().ref('users/001/target/').on('value', snapshot => {
+        firebase.database().ref('targets/001/').on('value', snapshot => {
             const data = snapshot.val();
             const prods = Object.values(data);
-            setTarget(prods)
-        })*/
+            setTarget(prods[0]);
+        })
+        firebase.database().ref('users/001/' + today() + '/').on('value', snapshot => {
+            const data = snapshot.val();
+            const prods = Object.values(data);
+            setWater(prods[2]);
+        })
+        firebase.database().ref('users/001/' + today() + '/').on('value', snapshot => {
+            const data = snapshot.val();
+            const prods = Object.values(data);
+            setPercentage(prods[1]);
+        })
     }, []);
 
     return (
         <View style={styles.container}>
-            <Title>Water intake tracker</Title>
+            <Title>Today</Title>
             <Chip
                 mode='outlined'
                 icon='information'
                 selectedColor='#2176FF'
+                style={{marginTop: 10}}
                 onPress={() => setIsDialogVisible(true)}>
                 Water target: {target} ml
             </Chip>

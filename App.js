@@ -4,6 +4,7 @@ import Bottomnav from "./components/Bottomnav"
 import {DefaultTheme, Provider as PaperProvider} from "react-native-paper";
 import { StyleSheet, View } from 'react-native';
 import firebase from "firebase/app";
+import TopBar from "./components/TopBar";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDDJdE1_PFukKC53IoewJ9aK5zt83Ei1ao",
@@ -40,6 +41,7 @@ export default function App() {
         <PaperProvider theme={theme}>
             <View style={styles.container}>
                 <View style={styles.content}>
+                    <TopBar/>
                     <Bottomnav/>
                 </View>
                 <StatusBar style="auto" />
@@ -56,6 +58,5 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 10,
-        marginTop: 25,
     }
 });

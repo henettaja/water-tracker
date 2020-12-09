@@ -1,6 +1,7 @@
 import React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import MainScreen from "./MainScreen";
+import HistoryScreen from "./HistoryScreen";
 
 const HistoryRoute = () => <Text>History</Text>;
 
@@ -11,13 +12,11 @@ const Bottomnav = () => {
     const [routes] = React.useState([
         { key: 'main', title: 'Main', icon: 'home' },
         { key: 'history', title: 'History', icon: 'history' },
-        { key: 'settings', title: 'Settings', icon: 'settings' },
     ]);
 
     const renderScene = BottomNavigation.SceneMap({
         main: MainScreen,
-        history: HistoryRoute,
-        settings: SettingsRoute,
+        history: HistoryScreen,
     });
 
     return (
