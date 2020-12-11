@@ -27,12 +27,14 @@ export default function App() {
     const theme = {
         ...DefaultTheme,
         dark: true,
+        mode: 'adaptive',
         roundness: 15,
         colors: {
             ...DefaultTheme.colors,
             primary: '#2176FF',
             accent: '#33A1FD',
-            background: '#31393C',
+            surface: '#131A26',
+            background: '#131A26',
             text: '#FFFFFF'
         },
     };
