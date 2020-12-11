@@ -1,9 +1,10 @@
 import React from 'react';
 import * as firebase from "firebase";
 import {Dimensions, StyleSheet, View} from "react-native";
-import {Title, Text} from "react-native-paper";
-import {Calendar, CalendarList} from "react-native-calendars";
-import valuesToPercentage, {today} from "../utilities";
+import {Title} from "react-native-paper";
+import {CalendarList} from "react-native-calendars";
+import {today} from "../utilities";
+import DateData from "./DateData";
 
 export default function HistoryScreen() {
 
@@ -29,7 +30,7 @@ export default function HistoryScreen() {
             <View style={styles.calendar}>
                 <CalendarList
                     theme={{
-                        calendarBackground: '#31393C',
+                        calendarBackground: '#131A26',
                         textSectionTitleColor: '#ffffff',
                         selectedDayTextColor: '#ffffff',
                         selectedDayBackgroundColor: '#2176FF',
@@ -41,21 +42,19 @@ export default function HistoryScreen() {
                     pagingEnabled={true}
                     onDayPress={(day) => {
                         if (!(waterObject.hasOwnProperty(day['dateString']))) {
-                            setSelected("No data");
+                            setSelected(null);
                         } else {
-                            setSelected(waterObject[day['dateString']] + " ml")
+                            setSelected(day["dateString"])
                         }
                     }}
                     markedDates={{...marked, [today()]: {selected: true, selectedColor: '#81c5fe'}}}
                 />
             </View>
             <View style={styles.content}>
-                {selected !== null &&
-                    <Text>Water intake: {selected}</Text>
-                }
-                {selected === null &&
-                    <Text>Select a day on the calendar to view your stats for that day.</Text>
-                }
+                <DateData
+                    date={selected}
+                    data={waterObject}
+                />
             </View>
         </View>
     )
