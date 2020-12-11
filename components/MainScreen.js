@@ -55,13 +55,23 @@ export default function MainScreen() {
         })
         firebase.database().ref('users/001/' + today() + '/').on('value', snapshot => {
             const data = snapshot.val();
-            const prods = Object.values(data);
-            setWater(prods[2]);
+            if (data) {
+                const prods = Object.values(data);
+                setWater(prods[2]);
+            } else {
+                console.log("No data for today yet")
+                return null;
+            }
         })
         firebase.database().ref('users/001/' + today() + '/').on('value', snapshot => {
             const data = snapshot.val();
-            const prods = Object.values(data);
-            setPercentage(prods[1]);
+            if (data) {
+                const prods = Object.values(data);
+                setPercentage(prods[1]);
+            } else {
+                console.log("No data for today yet")
+                return null;
+            }
         })
     }, []);
 
