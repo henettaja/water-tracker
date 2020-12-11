@@ -9,7 +9,7 @@ export default function HistoryScreen() {
 
     const [marked, setMarked] = React.useState({});
     const [waterObject, setWaterObject] = React.useState({});
-    const [selected, setSelected] = React.useState("");
+    const [selected, setSelected] = React.useState(null);
 
     // Currently breaks the app
     React.useEffect(() => {
@@ -43,14 +43,19 @@ export default function HistoryScreen() {
                         if (!(waterObject.hasOwnProperty(day['dateString']))) {
                             setSelected("No data");
                         } else {
-                            setSelected(waterObject[day['dateString']])
+                            setSelected(waterObject[day['dateString']] + " ml")
                         }
                     }}
                     markedDates={{...marked, [today()]: {selected: true, selectedColor: '#81c5fe'}}}
                 />
             </View>
             <View style={styles.content}>
-                <Text>Water intake: {selected}</Text>
+                {selected !== null &&
+                    <Text>Water intake: {selected}</Text>
+                }
+                {selected === null &&
+                    <Text>Select a day on the calendar to view your stats for that day.</Text>
+                }
             </View>
         </View>
     )
