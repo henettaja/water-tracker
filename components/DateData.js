@@ -10,16 +10,25 @@ const screenWidth = Dimensions.get("window").width;
 export default function DateData(props) {
 
     const [data, setData] = React.useState();
-    const [chartData, setChartData] = React.useState();
+    const [chartData, setChartData] = React.useState({});
+
 
     const mockdata = {
-        labels: ["2020-12-08", "2020-12-09", "2020-12-11"],
         datasets: [
-            {
-                data: [0, 1320, 330],
-            }
+            { data: [
+                    0,
+                    1320,
+                    660,
+                    330,
+                ]
+            },
         ],
-        legend: ["Water intake"] // optional
+        labels: [
+            "2020-12-08",
+            "2020-12-09",
+            "2020-12-11",
+            "2020-12-12",
+        ],
     };
 
     console.log(props.date)
@@ -36,7 +45,8 @@ export default function DateData(props) {
                 setData(null);
             }
         })
-    }, );
+        setChartData(splitObj(props.chartData));
+    }, [props.date, props.chartData]);
 
     const chartConfig = {
         backgroundColor: "#131A26",
@@ -58,7 +68,10 @@ export default function DateData(props) {
         <View>
             <Surface style={styles.surface}>
                 {data !== null &&
-                    <Text>Water intake: {data} ml</Text>
+                <Text>Water intake: {data} ml</Text>
+                }
+                {data === null &&
+                <Text>Select a valid date</Text>
                 }
             </Surface>
             <LineChart

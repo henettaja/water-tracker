@@ -9,18 +9,22 @@ export function today() {
     return DateTime.local().toSQLDate();
 }
 
-export function splitObj(data){
-    console.log(data)
-    var keys = [],
+export function splitObj(chartData){
+    console.log("Original data" + chartData)
+    let validKeys = [],
+        data = [],
+        keys = [],
         vals = [];
     for (const l in data) {
         if (data.hasOwnProperty(l)) {
-            if (l != undefined) {
                 keys.push(l);
                 vals.push(data[l]);
-            }
+                console.log("Keys: " + keys);
+                validKeys = keys.filter(key => { return  key !== "undefined"})
+                console.log("Valid keys: " + validKeys);
+                data = vals.filter(val => { return val != null || undefined })
         }
     }
-    console.log({labels: keys, datasets:[{vals}], legend: ["Water intake"]})
-    return {labels: keys, datasets:[{vals}], legend: ["Water intake"]};
+    console.log({labels: validKeys, datasets:[{data}]})
+    return {labels: validKeys, datasets:[{data}]};
 }

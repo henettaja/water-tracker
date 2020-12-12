@@ -3,7 +3,7 @@ import * as firebase from "firebase";
 import {Dimensions, StyleSheet, View} from "react-native";
 import {Title} from "react-native-paper";
 import {CalendarList} from "react-native-calendars";
-import {today} from "../utilities";
+import { today} from "../utilities";
 import DateData from "./DateData";
 
 export default function HistoryScreen() {
@@ -53,7 +53,7 @@ export default function HistoryScreen() {
             <View style={styles.content}>
                 <DateData
                     date={selected}
-                    data={waterObject}
+                    chartData={waterObject}
                 />
             </View>
         </View>
