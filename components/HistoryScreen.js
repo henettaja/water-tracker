@@ -45,6 +45,7 @@ export default function HistoryScreen() {
                             setSelected(null);
                         } else {
                             setSelected(day["dateString"])
+                            console.log(waterObject);
                         }
                     }}
                     markedDates={{...marked, [today()]: {selected: true, selectedColor: '#81c5fe'}}}

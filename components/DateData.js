@@ -3,48 +3,29 @@ import {Dimensions, StyleSheet, View} from "react-native";
 import {Text, Surface} from "react-native-paper";
 import * as firebase from "firebase";
 import {LineChart} from "react-native-chart-kit";
-import {splitObj} from "../utilities";
+import {splitObj, today} from "../utilities";
 
 const screenWidth = Dimensions.get("window").width;
 
 export default function DateData(props) {
 
-    const [data, setData] = React.useState();
-    const [chartData, setChartData] = React.useState({});
-
-
-    const mockdata = {
-        datasets: [
-            { data: [
-                    0,
-                    1320,
-                    660,
-                    330,
-                ]
-            },
-        ],
-        labels: [
-            "2020-12-08",
-            "2020-12-09",
-            "2020-12-11",
-            "2020-12-12",
-        ],
-    };
-
-    console.log(props.date)
+    // Prop for selected day's data
+    const [data, setData] = React.useState("");
+    // Prop for line chart's data
+    const [chartData, setChartData] = React.useState({datasets: [{data: [0]}], labels: [today()]});
 
     React.useEffect(() => {
         firebase.database().ref('users/001/' + props.date + '/').on('value', snapshot => {
             const data = snapshot.val();
             if (data) {
                 const prods = Object.values(data);
-                console.log(prods)
                 setData(prods[2]);
             } else {
-                console.log("No data")
                 setData(null);
             }
         })
+
+        // Split waterData from HistoryScreen to a suitable format for line chart
         setChartData(splitObj(props.chartData));
     }, [props.date, props.chartData]);
 
@@ -75,7 +56,7 @@ export default function DateData(props) {
                 }
             </Surface>
             <LineChart
-                data={mockdata}
+                data={chartData}
                 width={screenWidth}
                 height={220}
                 chartConfig={chartConfig}

@@ -10,21 +10,16 @@ export function today() {
 }
 
 export function splitObj(chartData){
-    console.log("Original data" + chartData)
-    let validKeys = [],
-        data = [],
-        keys = [],
-        vals = [];
-    for (const l in data) {
-        if (data.hasOwnProperty(l)) {
+    let data = [],
+        keys = [];
+
+    // Keys and values into two separate arrays
+    for (const l in chartData)
+        if (chartData.hasOwnProperty(l)) {
+            if (l !== "undefined" && chartData[l] !== null) {
                 keys.push(l);
-                vals.push(data[l]);
-                console.log("Keys: " + keys);
-                validKeys = keys.filter(key => { return  key !== "undefined"})
-                console.log("Valid keys: " + validKeys);
-                data = vals.filter(val => { return val != null || undefined })
+                data.push(chartData[l]);
+            }
         }
-    }
-    console.log({labels: validKeys, datasets:[{data}]})
-    return {labels: validKeys, datasets:[{data}]};
+    return {labels: keys, datasets:[{data}]};
 }
