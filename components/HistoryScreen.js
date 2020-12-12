@@ -38,6 +38,7 @@ export default function HistoryScreen() {
                         monthTextColor: '#ffffff',
                         textMonthFontWeight: 'bold',
                     }}
+                    firstDay={1}
                     horizontal={true}
                     pagingEnabled={true}
                     onDayPress={(day) => {
