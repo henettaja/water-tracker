@@ -27,7 +27,7 @@ export default function ChangeTargetDialog(props) {
                                 theme={{colors: {primary: '#2176FF'}}}
                                 onPress={() => {
                                 props.setIsDialogVisible(false);
-                                props.setTarget(parseInt(inputVal));
+                                if (!isNaN(inputVal)) props.setTarget(parseInt(inputVal));
                             }}>Done</Button>
                         </Dialog.Actions>
                     </Dialog>

@@ -27,7 +27,7 @@ export default function CustomWaterDialog(props) {
                             theme={{colors: {primary: '#2176FF'}}}
                             onPress={() => {
                             props.setIsDialogVisible(false);
-                            props.addWater(parseInt(inputVal));
+                            if (!isNaN(inputVal)) props.addWater(parseInt(inputVal));
                         }}>Done</Button>
                     </Dialog.Actions>
                 </Dialog>
