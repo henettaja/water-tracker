@@ -11,7 +11,6 @@ export default function MainScreen() {
     const [target, setTarget] = React.useState(0);
     const [water, setWater] = React.useState(0);
     const [percentage, setPercentage] = React.useState(0);
-
     const [visible, setVisible] = React.useState(false);
     const onToggleSnackBar = () => setVisible(true);
     const onDismissSnackBar = () => setVisible(false);
@@ -122,6 +121,7 @@ export default function MainScreen() {
                 visible={visible}
                 duration={2500}
                 onDismiss={onDismissSnackBar}
+                theme={{ colors: { surface: '#FFFFFF'}}}
                 action={{
                     label: 'Reset',
                     onPress: () => resetWater()
