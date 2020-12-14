@@ -6,15 +6,20 @@ import ChangeTargetDialog from "./ChangeTargetDialog";
 import valuesToPercentage, {today} from "../utilities";
 import * as firebase from "firebase";
 
+const screenWidth = Dimensions.get("window").width;
+
 export default function MainScreen() {
 
     const [target, setTarget] = React.useState(0);
     const [water, setWater] = React.useState(0);
     const [percentage, setPercentage] = React.useState(0);
+
+    const [waterCup, setWaterCup] = React.useState(330);
+    const [waterBottle, setWaterBottle] = React.useState(500);
+
     const [visible, setVisible] = React.useState(false);
     const onToggleSnackBar = () => setVisible(true);
     const onDismissSnackBar = () => setVisible(false);
-
     const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 
     const defineTarget = (userTarget) => {
@@ -26,12 +31,12 @@ export default function MainScreen() {
         ).then(r => null);
     }
 
-    const addWater = () => {
+    const addWater = (amount) => {
         firebase.database().ref('users/001/' + today() + '/').update(
-            {'waterAmount': water + 330, 'date': today(), 'percentage': valuesToPercentage(target, water + 330)}
+            {'waterAmount': water + amount, 'date': today(), 'percentage': valuesToPercentage(target, water + amount)}
         ).then(r => null);
         firebase.database().ref('waterAmounts/001/' + today() + '/').update(
-            {'waterAmount': water + 330, 'date': today(), 'percentage': valuesToPercentage(target, water + 330)}
+            {'waterAmount': water + amount, 'date': today(), 'percentage': valuesToPercentage(target, water + amount)}
         ).then(r => null);
         firebase.database().ref('datesTracked/001/' + today() + '/').update(
             {'date': today()}
@@ -108,13 +113,19 @@ export default function MainScreen() {
                         )
                     }
                     backgroundColor="#5C6B70"/>
-                <View style={styles.buttons}>
-                    <Button icon="plus" mode="contained" onPress={() => addWater()}>
-                        Add water
-                    </Button>
-                    <Button icon="plus" mode="contained" onPress={() => resetWater()}>
-                        Reset water
-                    </Button>
+                <View style={styles.addContainer}>
+                    <Title style={{marginHorizontal: 70}}>+ Add a portion of water</Title>
+                    <View style={styles.buttons}>
+                        <Button icon="cup" mode="contained" onPress={() => addWater(waterCup)}>
+                            Cup
+                        </Button>
+                        <Button icon="glass-stange" mode="contained" onPress={() => addWater(waterBottle)}>
+                            Bottle
+                        </Button>
+                        <Button icon="water" mode="contained" onPress={() => resetWater()}>
+                            Something else
+                        </Button>
+                    </View>
                 </View>
             </View>
             <Snackbar
@@ -149,13 +160,27 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
+        marginTop: 50,
         flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+    },
+    addContainer: {
+        flex: 1,
+        flexGrow: 0.35,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: screenWidth,
+        alignContent: 'space-between',
+        flexWrap: 'wrap',
         justifyContent: 'space-evenly',
     },
     buttons: {
-        flex: 0,
         flexDirection: 'row',
-        width: Dimensions.get('window').width,
+        alignItems: 'center',
+        width: screenWidth-100,
+        alignContent: 'space-between',
+        flexWrap: 'wrap',
         justifyContent: 'space-evenly',
     },
 });
