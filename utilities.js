@@ -2,7 +2,7 @@ import {DateTime} from "luxon";
 
 export default function valuesToPercentage(target, current) {
 
-    return 100 * (current / target)
+    return Math.round(100 * (current / target));
 }
 
 export function today() {
