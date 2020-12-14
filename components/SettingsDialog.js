@@ -6,6 +6,8 @@ export default function SettingsDialog(props) {
 
     const[bottleVolume, setBottleVolume] = React.useState();
     const[cupVolume, setCupVolume] = React.useState();
+    const[oldBottleVolume, setOldBottleVolume] = React.useState();
+    const[oldCupVolume, setOldCupVolume] = React.useState();
 
 
     function updateWaterCup(volume) {
@@ -28,8 +30,8 @@ export default function SettingsDialog(props) {
         firebase.database().ref('containers/001/').on('value', snapshot => {
             const data = snapshot.val();
             const prods = Object.values(data);
-            setBottleVolume(prods[0]);
-            setCupVolume(prods[1]);
+            setOldBottleVolume(prods[0]);
+            setOldCupVolume(prods[1]);
         })
     })
 
@@ -47,8 +49,8 @@ export default function SettingsDialog(props) {
                         <Text>{`
 Current volumes:
 
-Water cup: ${cupVolume} ml
-Water bottle: ${bottleVolume} ml`
+Water cup: ${oldCupVolume} ml
+Water bottle: ${oldBottleVolume} ml`
                         }</Text>
 
                         <TextInput
@@ -56,6 +58,7 @@ Water bottle: ${bottleVolume} ml`
                             label="Volume of your water cup"
                             placeholder="in millilitres"
                             underlineColor="#2176FF"
+                            theme={{colors: {primary: '#2176FF'}}}
                             onChangeText={text => setCupVolume(text)}
                         />
                         <TextInput
@@ -63,6 +66,7 @@ Water bottle: ${bottleVolume} ml`
                             label="Volume of your water bottle"
                             placeholder="in millilitres"
                             underlineColor="#2176FF"
+                            theme={{colors: {primary: '#2176FF'}}}
                             onChangeText={text => setBottleVolume(text)}
                         />
                     </Dialog.Content>
