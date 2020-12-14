@@ -52,14 +52,14 @@ Water bottle: ${bottleVolume} ml`
                         }</Text>
 
                         <TextInput
-                            style={{marginTop: 20}}
+                            style={{marginTop: 30}}
                             label="Volume of your water cup"
                             placeholder="in millilitres"
                             underlineColor="#2176FF"
                             onChangeText={text => setCupVolume(text)}
                         />
                         <TextInput
-                            style={{marginTop: 20}}
+                            style={{marginTop: 60}}
                             label="Volume of your water bottle"
                             placeholder="in millilitres"
                             underlineColor="#2176FF"
