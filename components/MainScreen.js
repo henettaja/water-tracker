@@ -72,6 +72,12 @@ export default function MainScreen() {
             const prods = Object.values(data);
             setTarget(prods[0]);
         })
+        firebase.database().ref('containers/001/').on('value', snapshot => {
+            const data = snapshot.val();
+            const prods = Object.values(data);
+            setWaterBottle(prods[0]);
+            setWaterCup(prods[1]);
+        })
         firebase.database().ref('users/001/' + today() + '/').on('value', snapshot => {
             const data = snapshot.val();
             if (data) {
