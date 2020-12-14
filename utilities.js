@@ -17,7 +17,8 @@ export function splitObj(chartData){
     for (const l in chartData)
         if (chartData.hasOwnProperty(l)) {
             if (l !== "undefined" && chartData[l] !== null) {
-                keys.push(l);
+                const parsedKey = DateTime.fromSQL(l).weekdayLong;
+                keys.push(parsedKey);
                 data.push(chartData[l]);
             }
         }
