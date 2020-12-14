@@ -12,7 +12,7 @@ export default function CustomWaterDialog(props) {
                 <Dialog
                     visible={props.isDialogVisible}
                     onDismiss={() => props.setIsDialogVisible(false)}>
-                    <Dialog.Title>Add water intake</Dialog.Title>
+                    <Dialog.Title>Water intake</Dialog.Title>
                     <Dialog.Content>
                         <TextInput
                             label="Amount of water to add"
