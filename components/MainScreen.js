@@ -5,6 +5,7 @@ import {AnimatedCircularProgress} from "react-native-circular-progress";
 import ChangeTargetDialog from "./ChangeTargetDialog";
 import valuesToPercentage, {today} from "../utilities";
 import * as firebase from "firebase";
+import CustomWaterDialog from "./CustomWaterDialog";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -20,7 +21,11 @@ export default function MainScreen() {
     const [visible, setVisible] = React.useState(false);
     const onToggleSnackBar = () => setVisible(true);
     const onDismissSnackBar = () => setVisible(false);
-    const [isDialogVisible, setIsDialogVisible] = React.useState(false);
+
+    const [isTargetDialogVisible, setIsTargetDialogVisible] = React.useState(false);
+    const [isCustomDialogVisible, setIsCustomDialogVisible] = React.useState(false);
+
+
 
     const defineTarget = (userTarget) => {
         firebase.database().ref('users/001/').update(
@@ -87,7 +92,7 @@ export default function MainScreen() {
                 icon='information'
                 selectedColor='#2176FF'
                 style={{marginTop: 10}}
-                onPress={() => setIsDialogVisible(true)}>
+                onPress={() => setIsTargetDialogVisible(true)}>
                 Water target: {target} ml
             </Chip>
             <View style={styles.content}>
@@ -122,7 +127,7 @@ export default function MainScreen() {
                         <Button icon="glass-stange" mode="contained" onPress={() => addWater(waterBottle)}>
                             Bottle
                         </Button>
-                        <Button icon="water" mode="contained" onPress={() => resetWater()}>
+                        <Button icon="water" mode="contained" onPress={() => setIsCustomDialogVisible(true)}>
                             Something else
                         </Button>
                     </View>
@@ -141,10 +146,14 @@ export default function MainScreen() {
             </Snackbar>
             <Portal>
                 <ChangeTargetDialog
-                    isDialogVisible={isDialogVisible}
-                    setIsDialogVisible={setIsDialogVisible}
+                    isDialogVisible={isTargetDialogVisible}
+                    setIsDialogVisible={setIsTargetDialogVisible}
                     setTarget={defineTarget}
-                    target={target}
+                />
+                <CustomWaterDialog
+                    isDialogVisible={isCustomDialogVisible}
+                    setIsDialogVisible={setIsCustomDialogVisible}
+                    addWater={addWater}
                 />
             </Portal>
         </View>
