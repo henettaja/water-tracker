@@ -40,11 +40,6 @@
   <p align="center">
     This is an app for tracking daily water intake.
     <br />
-    <a href="https://github.com/henettaja/water-tracker/"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/henettaja/water-tracker/">View Demo</a>
-    ·
     <a href="https://github.com/henettaja/water-tracker/issues">Report Bug</a>
     ·
     <a href="https://github.com/henettaja/water-tracker/issues">Request Feature</a>
@@ -84,19 +79,19 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+An app to track daily water intake made using [Expo](https://expo.io/), [React Native](https://reactnative.dev/) and [Firebase Realtime Database](https://firebase.google.com/docs/database). Developed as a final project on [Haaga-Helia's](https://www.haaga-helia.fi/fi) [mobile programming](https://opinto-opas.haaga-helia.fi/course_unit/SWD4TN021) course.
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+<img src="./assets/Screenshot_20201215-225828.jpg" width="300" alt="Screenshot of project"/>   <img src="./assets/Screenshot_20201215-225728.jpg" width="300" alt="Screenshot of project"/>
 
 
 ### Built With
 
+* [Expo](https://expo.io/)
 * [React Native](https://reactnative.dev/)
+* [Firebase Realtime Database](https://firebase.google.com/docs/database)
 * [React Native Paper](https://callstack.github.io/react-native-paper/)
 * [react-native-circular-progress](https://github.com/bartgryszko/react-native-circular-progress)
-
+* [react-native-calendars](https://github.com/wix/react-native-calendars)
 
 
 <!-- GETTING STARTED -->
@@ -106,11 +101,15 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+You need these on your computer before you start
 * npm
-  ```sh
-  npm install npm@latest -g
-  ```
+
+Install npm by following these instructions: [Get npm](https://www.npmjs.com/get-npm)
+
+* Expo CLI
+```sh
+npm install --global expo-cli
+```
 
 ### Installation
 
@@ -122,23 +121,25 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
+3. Start Expo
+   ```sh
+   expo start
+   ```
 
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+On the main screen you have three buttons, one for a cup of water, another for a bottle of water and a third one where you can input any amount of water you want. The point of these is to make it as quick and easy as possible to track your water intake after drinking ie. a glass of water. You can customize the corresponding volumes of the cup and the bottle to match your own in the settings of the app.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+<img src="./assets/Screenshot_20201215-225821.jpg" width="300" alt="Screenshot of project"/>   <img src="./assets/Screenshot_20201215-225744.jpg" width="300" alt="Screenshot of project"/>
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
-
 
 
 <!-- CONTRIBUTING -->
@@ -164,7 +165,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Henri Väisänen - [LinkedIn](https://www.linkedin.com/in/henrivaisanen/)
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
