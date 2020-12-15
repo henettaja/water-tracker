@@ -45,16 +45,6 @@ export default function MainScreen() {
                     'percentage': valuesToPercentage(target, water + amount)
                 }
             ).then(() => null);
-            firebase.database().ref('waterAmounts/001/' + today() + '/').update(
-                {
-                    'waterAmount': water + amount,
-                    'date': today(),
-                    'percentage': valuesToPercentage(target, water + amount)
-                }
-            ).then(() => null);
-            firebase.database().ref('datesTracked/001/' + today() + '/').update(
-                {'date': today()}
-            ).then(() => null);
             onToggleSnackBar();
         }
     }
@@ -83,19 +73,9 @@ export default function MainScreen() {
             if (data) {
                 const prods = Object.values(data);
                 setWater(prods[2]);
-            } else {
-                console.log("No data for today yet")
-                return null;
-            }
-        })
-        firebase.database().ref('users/001/' + today() + '/').on('value', snapshot => {
-            const data = snapshot.val();
-            if (data) {
-                const prods = Object.values(data);
                 setPercentage(prods[1]);
             } else {
-                console.log("No data for today yet")
-                return null;
+                addWater(0);
             }
         })
     }, []);
