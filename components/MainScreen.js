@@ -12,6 +12,7 @@ const screenWidth = Dimensions.get("window").width;
 export default function MainScreen() {
 
     const [target, setTarget] = React.useState(0);
+    const [targetReach, setTargetReach] = React.useState(false);
     const [water, setWater] = React.useState(0);
     const [percentage, setPercentage] = React.useState(0);
 
@@ -21,6 +22,10 @@ export default function MainScreen() {
     const [visible, setVisible] = React.useState(false);
     const onToggleSnackBar = () => setVisible(true);
     const onDismissSnackBar = () => setVisible(false);
+
+    const [targetSnackVisible, setTargetSnackVisible] = React.useState(false);
+    const onToggleTargetSnackBar = () => setTargetSnackVisible(true);
+    const onDismissTargetSnackBar = () => setTargetSnackVisible(false);
 
     const [isTargetDialogVisible, setIsTargetDialogVisible] = React.useState(false);
     const [isCustomDialogVisible, setIsCustomDialogVisible] = React.useState(false);
@@ -47,6 +52,7 @@ export default function MainScreen() {
             ).then(() => null);
             onToggleSnackBar();
         }
+        if (valuesToPercentage(target, water + amount) >= 100) setTargetReach(true);
     }
 
     const resetWater = () => {
@@ -74,11 +80,22 @@ export default function MainScreen() {
                 const prods = Object.values(data);
                 setWater(prods[2]);
                 setPercentage(prods[1]);
+                if (prods[2]<100) {
+                    setTargetReach(false);
+                }
             } else {
                 addWater(0);
             }
         })
     }, []);
+
+    React.useEffect(() => {
+        console.log("target state change " + targetReach);
+        if (targetReach===true) {
+            onToggleTargetSnackBar();
+            console.log("Target reached!")
+        }
+    }, [targetReach])
 
     return (
         <View style={styles.container}>
@@ -140,6 +157,15 @@ export default function MainScreen() {
                 }}>
                 Your daily water intake level is now {percentage}%!
             </Snackbar>
+            <Snackbar
+                visible={targetSnackVisible}
+                duration={2500}
+                onDismiss={onDismissTargetSnackBar}
+                theme={{ colors: { surface: '#FFFFFF', onSurface: '#FDCA40', accent: '#FFFFFF'}}}
+                action={{
+                    label: 'Yay!',
+                    onPress: () => onDismissTargetSnackBar()
+                }}>Congrats, you reached your water intake goal!</Snackbar>
             <Portal>
                 <ChangeTargetDialog
                     isDialogVisible={isTargetDialogVisible}
