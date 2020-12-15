@@ -139,7 +139,7 @@ On the main screen you have three buttons, one for a cup of water, another for a
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/henettaja/water-tracker/issues) for a list of proposed features (and known issues).
 
 
 <!-- CONTRIBUTING -->
