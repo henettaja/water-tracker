@@ -111,8 +111,8 @@ export default function MainScreen() {
             <View style={styles.content}>
                 <AnimatedCircularProgress
                     style={styles.progress}
-                    size={260}
-                    width={40}
+                    size={245}
+                    width={32}
                     rotation={0.25}
                     arcSweepAngle={360}
                     fill={percentage}
@@ -217,23 +217,32 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     circle: {
-        width: 180,
-        height: 180,
+        width: 181,
+        height: 181,
         borderRadius: 120,
         borderWidth: 5,
         backgroundColor: '#27354d',
-        borderColor: "#415982",
+        borderColor: "#0051d4",
         borderTopLeftRadius: 10,
-        borderTopWidth: 10,
-        borderLeftWidth: 10,
+        borderBottomWidth: 10,
+        borderRightWidth: 10,
         transform: [{ rotate: "45deg"}],
+        shadowColor: "#000000",
+        shadowOffset: {
+            width: 1,
+            height: 1,
+        },
+        shadowOpacity: 0.9,
+        shadowRadius: 10.00,
+        elevation: 10,
     },
     progress: {
-        width: 270,
-        height: 270,
+        width: 264,
+        height: 264,
         marginBottom: 10,
         borderRadius: 300,
-        borderWidth: 5,
-        borderColor: "#415982",
+        borderWidth: 10,
+        borderColor: "#0051d4",
+        overflow: 'hidden',
     }
 });
