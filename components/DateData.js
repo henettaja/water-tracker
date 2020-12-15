@@ -10,7 +10,7 @@ const screenWidth = Dimensions.get("window").width;
 export default function DateData(props) {
 
     // Prop for selected day's data
-    const [data, setData] = React.useState("");
+    const [data, setData] = React.useState(null);
     // Prop for line chart's data
     const [chartData, setChartData] = React.useState({datasets: [{data: [0]}], labels: [today()]});
 

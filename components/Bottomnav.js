@@ -1,11 +1,7 @@
 import React from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
+import { BottomNavigation} from 'react-native-paper';
 import MainScreen from "./MainScreen";
 import HistoryScreen from "./HistoryScreen";
-
-const HistoryRoute = () => <Text>History</Text>;
-
-const SettingsRoute = () => <Text>Settings</Text>;
 
 const Bottomnav = () => {
     const [index, setIndex] = React.useState(0);

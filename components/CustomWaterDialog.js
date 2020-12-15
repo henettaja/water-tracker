@@ -1,10 +1,9 @@
 import React from 'react';
-import { Provider, Portal, Dialog, Button, Text, TextInput } from "react-native-paper";
-import View from "react-native";
+import { Provider, Portal, Dialog, Button, TextInput } from "react-native-paper";
 
 export default function CustomWaterDialog(props) {
 
-    const [inputVal, setInputVal] = React.useState('0');
+    const [inputVal, setInputVal] = React.useState("NaN");
 
     return (
         <Provider>
@@ -26,9 +25,9 @@ export default function CustomWaterDialog(props) {
                         <Button
                             theme={{colors: {primary: '#2176FF'}}}
                             onPress={() => {
-                            props.setIsDialogVisible(false);
-                            if (!isNaN(inputVal)) props.addWater(parseInt(inputVal));
-                        }}>Done</Button>
+                                props.setIsDialogVisible(false);
+                                if (inputVal!=="") props.addWater(parseInt(inputVal));
+                            }}>Done</Button>
                     </Dialog.Actions>
                 </Dialog>
             </Portal>

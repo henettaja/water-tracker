@@ -30,10 +30,10 @@ export default function MainScreen() {
     const defineTarget = (userTarget) => {
         firebase.database().ref('users/001/').update(
             {'waterTarget': userTarget}
-        ).then(r => null);
+        ).then(() => null);
         firebase.database().ref('targets/001/').update(
             {'waterTarget': userTarget}
-        ).then(r => null);
+        ).then(() => null);
     }
 
     const addWater = (amount) => {
@@ -44,17 +44,17 @@ export default function MainScreen() {
                     'date': today(),
                     'percentage': valuesToPercentage(target, water + amount)
                 }
-            ).then(r => null);
+            ).then(() => null);
             firebase.database().ref('waterAmounts/001/' + today() + '/').update(
                 {
                     'waterAmount': water + amount,
                     'date': today(),
                     'percentage': valuesToPercentage(target, water + amount)
                 }
-            ).then(r => null);
+            ).then(() => null);
             firebase.database().ref('datesTracked/001/' + today() + '/').update(
                 {'date': today()}
-            ).then(r => null);
+            ).then(() => null);
             onToggleSnackBar();
         }
     }
@@ -62,7 +62,7 @@ export default function MainScreen() {
     const resetWater = () => {
         firebase.database().ref('users/001/' + today() + '/').update(
             {'waterAmount': 0, 'date': today(), 'percentage': 0}
-        ).then(r => null);
+        ).then(() => null);
         setPercentage(0);
     }
 

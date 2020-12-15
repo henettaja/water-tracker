@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Appbar, Button, Divider, Menu, Modal, Portal, Provider as PaperProvider, Text} from 'react-native-paper';
+import {Appbar, Divider, Menu, Portal} from 'react-native-paper';
 import * as firebase from "firebase";
 import {today} from "../utilities";
 import SettingsDialog from "./SettingsDialog";
@@ -16,7 +16,7 @@ export default function TopBar() {
     const resetWater = () => {
         firebase.database().ref('users/001/' + today() + '/').update(
             {'waterAmount': 0, 'date': today(), 'percentage': 0}
-        ).then(r => null);
+        ).then(() => null);
     }
 
     return (

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {Button, Dialog, Modal, Portal, Provider, Text, TextInput, Title} from "react-native-paper";
+import {Button, Dialog, Portal, Provider, Text, TextInput} from "react-native-paper";
 import * as firebase from "firebase";
 
 export default function SettingsDialog(props) {
 
-    const[bottleVolume, setBottleVolume] = React.useState();
-    const[cupVolume, setCupVolume] = React.useState();
-    const[oldBottleVolume, setOldBottleVolume] = React.useState();
-    const[oldCupVolume, setOldCupVolume] = React.useState();
+    const[bottleVolume, setBottleVolume] = React.useState(0);
+    const[cupVolume, setCupVolume] = React.useState(0);
+    const[oldBottleVolume, setOldBottleVolume] = React.useState(0);
+    const[oldCupVolume, setOldCupVolume] = React.useState(0);
 
 
     function updateWaterCup(volume) {
@@ -15,7 +15,7 @@ export default function SettingsDialog(props) {
             {
                 'waterCup': volume,
             }
-        ).then(r => null);
+        ).then(() => null);
     }
 
     function updateWaterBottle(volume) {
@@ -23,7 +23,7 @@ export default function SettingsDialog(props) {
             {
                 'waterBottle': volume,
             }
-        ).then(r => null);
+        ).then(() => null);
     }
 
     React.useEffect(() => {
