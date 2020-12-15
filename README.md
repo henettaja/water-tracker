@@ -38,7 +38,7 @@
   <h3 align="center">Water tracker</h3>
 
   <p align="center">
-    This is an app for tracking daily water intake.
+    An app for tracking daily water intake.
     <br />
     <a href="https://github.com/henettaja/water-tracker/issues">Report Bug</a>
     ·
@@ -191,6 +191,6 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [issues-shield]: https://img.shields.io/github/issues/henettaja/water-tracker.svg?style=for-the-badge
 [issues-url]: https://github.com/henettaja/water-tracker/issues
 [license-shield]: https://img.shields.io/github/license/henettaja/water-tracker.svg?style=for-the-badge
-[license-url]: https://github.com/henettaja/water-tracker/blob/master/LICENSE.txt
+[license-url]: https://github.com/henettaja/water-tracker/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: linkedin.com/in/henrivaisanen/
