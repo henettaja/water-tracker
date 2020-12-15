@@ -10,17 +10,21 @@ export function today() {
 }
 
 export function splitObj(chartData){
-    let data = [],
-        keys = [];
+    let alldata = [],
+        allkeys = [];
 
     // Keys and values into two separate arrays
-    for (const l in chartData)
+    for (const l in chartData) {
         if (chartData.hasOwnProperty(l)) {
             if (l !== "undefined" && chartData[l] !== null) {
-                const parsedKey = DateTime.fromSQL(l).weekdayLong;
-                keys.push(parsedKey);
-                data.push(chartData[l]);
+                const parsedKey = DateTime.fromSQL(l).weekdayShort;
+                allkeys.push(parsedKey);
+                alldata.push(chartData[l]);
             }
         }
+    }
+    const keys = allkeys.slice(Math.max(allkeys.length-7, 0))
+    const data = alldata.slice(Math.max(alldata.length-7, 0))
+
     return {labels: keys, datasets:[{data}]};
 }
