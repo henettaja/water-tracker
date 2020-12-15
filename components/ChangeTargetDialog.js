@@ -12,17 +12,22 @@ export default function ChangeTargetDialog(props) {
                     <Dialog
                         visible={props.isDialogVisible}
                         onDismiss={() => props.setIsDialogVisible(false)}>
-                        <Dialog.Title>Set water target (millilitres)</Dialog.Title>
+                        <Dialog.Title>Water target</Dialog.Title>
                         <Dialog.Content>
                             <TextInput
-                                value={props.target}
+                                label="Set water target"
+                                placeholder="in millilitres"
+                                underlineColor="#2176FF"
+                                theme={{colors: {primary: '#2176FF'}}}
                                 onChangeText={text => setInputVal(text)}
                             />
                         </Dialog.Content>
                         <Dialog.Actions>
-                            <Button onPress={() => {
+                            <Button
+                                theme={{colors: {primary: '#2176FF'}}}
+                                onPress={() => {
                                 props.setIsDialogVisible(false);
-                                props.setTarget(parseInt(inputVal));
+                                if (!isNaN(inputVal)) props.setTarget(parseInt(inputVal));
                             }}>Done</Button>
                         </Dialog.Actions>
                     </Dialog>
