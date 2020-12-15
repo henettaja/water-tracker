@@ -110,17 +110,19 @@ export default function MainScreen() {
             </Chip>
             <View style={styles.content}>
                 <AnimatedCircularProgress
-                    style={{alignSelf: 'center'}}
-                    size={250}
-                    width={50}
-                    rotation={270}
-                    arcSweepAngle={180}
+                    style={styles.progress}
+                    size={260}
+                    width={40}
+                    rotation={0.25}
+                    arcSweepAngle={360}
                     fill={percentage}
                     tintColor="#2176FF"
+                    backgroundColor="#131A26"
                     onAnimationComplete={() => console.log('onAnimationComplete')}
+                    childrenContainerStyle={styles.circle}
                     children={
                         () => (
-                            <View style={{alignItems: 'center'}}>
+                            <View style={{alignItems: 'center', transform: [{ rotate: "-45deg"}],}}>
                                 <Title>
                                     { water } ml
                                 </Title>
@@ -130,7 +132,7 @@ export default function MainScreen() {
                             </View>
                         )
                     }
-                    backgroundColor="#5C6B70"/>
+                />
                 <View style={styles.addContainer}>
                     <Title style={{marginHorizontal: 70}}>+ Add a portion of water</Title>
                     <View style={styles.buttons}>
@@ -198,7 +200,7 @@ const styles = StyleSheet.create({
     },
     addContainer: {
         flex: 1,
-        flexGrow: 0.35,
+        flexGrow: 0.45,
         flexDirection: 'row',
         alignItems: 'center',
         width: screenWidth,
@@ -214,4 +216,24 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
     },
+    circle: {
+        width: 180,
+        height: 180,
+        borderRadius: 120,
+        borderWidth: 5,
+        backgroundColor: '#27354d',
+        borderColor: "#415982",
+        borderTopLeftRadius: 10,
+        borderTopWidth: 10,
+        borderLeftWidth: 10,
+        transform: [{ rotate: "45deg"}],
+    },
+    progress: {
+        width: 270,
+        height: 270,
+        marginBottom: 10,
+        borderRadius: 300,
+        borderWidth: 5,
+        borderColor: "#415982",
+    }
 });
