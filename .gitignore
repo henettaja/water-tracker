@@ -10,6 +10,7 @@ npm-debug.*
 web-build/
 .idea/*
 theme.txt
+firebaseConfig.js
 
 # macOS
 .DS_Store
