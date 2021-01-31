@@ -38,7 +38,7 @@
   <h3 align="center">Water tracker</h3>
 
   <p align="center">
-    An app for tracking daily water intake.
+    A React Native app for Android to track daily water intake.
     <br />
     <a href="https://github.com/henettaja/water-tracker/issues">Report Bug</a>
     ·
@@ -79,7 +79,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-An app to track daily water intake made using [Expo](https://expo.io/), [React Native](https://reactnative.dev/) and [Firebase Realtime Database](https://firebase.google.com/docs/database). Developed as a final project on [Haaga-Helia's](https://www.haaga-helia.fi/fi) [mobile programming](https://opinto-opas.haaga-helia.fi/course_unit/SWD4TN021) course.
+An app to track daily water intake made using [Expo](https://expo.io/), [React Native](https://reactnative.dev/) and [Firebase Realtime Database](https://firebase.google.com/docs/database). Developed as a final project on [Haaga-Helia's](https://www.haaga-helia.fi/fi) [mobile programming](https://opinto-opas.haaga-helia.fi/course_unit/SWD4TN021) course. Made to work with Android.
 
 <img src="./assets/Screenshot_20201215-225828.jpg" width="300" alt="Screenshot of project"/>   <img src="./assets/Screenshot_20201215-225728.jpg" width="300" alt="Screenshot of project"/>
 
