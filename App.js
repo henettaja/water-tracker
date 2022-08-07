@@ -5,7 +5,7 @@ import {DefaultTheme, Provider as PaperProvider} from "react-native-paper";
 import { StyleSheet, View } from 'react-native';
 import firebase from "firebase/app";
 import TopBar from "./components/TopBar";
-import {firebaseConfig} from "./firebaseConfig";
+import {firebaseConfig} from "./firebaseConfig.js";
 
 if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
